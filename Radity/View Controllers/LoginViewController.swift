@@ -98,7 +98,9 @@ class LoginViewController: UIViewController {
     func setupContainerView() {
         containerView.fillHorizontally(parent: view)
         containerView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
-        containerView.heightAnchor.constraint(equalToConstant: 280).isActive = true
+        containerView.heightAnchor.constraint(equalToConstant: 300).isActive = true
+        containerView.layer.cornerRadius = 8
+        containerView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
     }
     
     func setupVStack() {
