@@ -78,7 +78,7 @@ struct ViewBuilder {
         return imageView
     }
     
-    static func containerView() -> UIView {
+    static func view() -> UIView {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
