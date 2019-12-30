@@ -51,6 +51,7 @@ struct ViewBuilder {
         view.addSubview(imageview)
         
         textfield.fillVertically(parent: view)
+        
         textfield.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16).isActive = true
         
         imageview.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16).isActive = true
