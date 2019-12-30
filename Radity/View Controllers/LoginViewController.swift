@@ -29,10 +29,14 @@ class LoginViewController: UIViewController {
         setupLoginView()
     }
     
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         NotificationCenter.default.addObserver(self, selector: #selector(showKeyboard(notification: )), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(hideKeyboard(notification: )), name: UIResponder.keyboardWillHideNotification, object: nil)
+        
+        navigationController?.navigationBar.isHidden = true
+
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -150,7 +154,6 @@ class LoginViewController: UIViewController {
     func setupHStack() {
         hStack.axis = .horizontal
         hStack.distribution = .fillEqually
-        
         hStack.addArrangedSubview(forgetPasswordLabel)
         hStack.addArrangedSubview(createAccountLabel)
     }
@@ -160,7 +163,6 @@ class LoginViewController: UIViewController {
         forgetPasswordLabel.isUserInteractionEnabled = true
         createAccountLabel.textAlignment = .center
         createAccountLabel.isUserInteractionEnabled = true
-        
         
         let underlineAttribute = [NSAttributedString.Key.underlineStyle: NSUnderlineStyle.single.rawValue]
         
@@ -193,7 +195,8 @@ class LoginViewController: UIViewController {
     
     
     @objc func loginButtonPressed(sender: UIButton) {
-        print("clicked")
+        //TODO: embedd navctrl, push tab, hide navbar here
+        navigationController?.pushViewController(TabBarController(), animated: true)
     }
     
     @objc func handleForgetPassword(sender: UILabel) {
