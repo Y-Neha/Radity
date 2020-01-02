@@ -220,3 +220,24 @@ extension LoginViewController {
         view.endEditing(true)
     }
 }
+
+#if canImport(SwiftUI) && DEBUG
+import SwiftUI
+
+struct LoginViewRepresentable: UIViewRepresentable {
+    func makeUIView(context: Context) -> UIView {
+        return LoginViewController().view
+    }
+    
+    func updateUIView(_ view: UIView, context: Context) {
+
+    }
+}
+@available(iOS 13.0, *)
+struct LoginViewController_Preview: PreviewProvider {
+    static var previews: some View {
+        LoginViewRepresentable()
+    }
+}
+
+#endif
