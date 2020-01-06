@@ -8,34 +8,43 @@
 
 import Foundation
 
-struct Coin {
-    let id: Int
-    let symbol: String
-    let name: String
-    let price_usd: String
-}
+let images = ["dollarsign.circle", "centsign.circle", "francsign.circle"]
 
-//struct Coins {
-//    let coins: [Coin]
-//}
-
-struct BankAccount {
+struct Currency {
     let name: String
     let accountType: String
     let price: String
     let currency: String
     let price_usd: String
+    let image: String
+    static func getBankData() -> [Currency] {
+        return [
+            Currency(name: "HSBC", accountType: "Euro Account", price: "2020", currency: "euro", price_usd: "2240", image: images[0]),
+            Currency(name: "Credit Suisse", accountType: "USD Custody", price: "1340", currency: "usd", price_usd: "1340", image: images[1]),
+            Currency(name: "UBS", accountType: "CHF Account", price: "1471", currency: "CHF", price_usd: "1500", image: images[2])
+        ]
+    }
+    
+    static func getBitCoinData() -> [Currency] {
+        return [
+            Currency(name: "BTC", accountType: "Bitcoin Wallet", price: "0093", currency: "BTC", price_usd: "945", image: "BTC"),
+            Currency(name: "LTC", accountType: "Litecoin Wallet", price: "0.01400", currency: "LTC", price_usd: "240", image: "LTC"),
+            Currency(name: "BCH", accountType: "Bitcoin Cash", price: "131", currency: "BCH", price_usd: "400", image: "BCH")
+        ]
+    }
 }
-//struct BankAccounts {
-//    let accounts: [BankAccount]
-//}
 
-struct Wallet {
-    let coinList: [Coin]
-    let accounList: [BankAccount]
+struct MyWallet {
+    let currencyList: [Currency]
+    static func getData() -> [MyWallet] {
+        return [
+            MyWallet(currencyList: Currency.getBitCoinData()),
+            MyWallet(currencyList: Currency.getBankData())
+        ]
+    }
 }
 
 //API: https://api.coinlore.com/api/tickers/
 
-// TODO: sections in tableview
 //Change Notification tab to news
+

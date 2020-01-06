@@ -30,21 +30,25 @@ class HomeViewController: UIViewController {
     let tableView = ViewBuilder.tableView
     let tableViewIdentifier = "tableCell"
     
-
-    var wallet = Wallet(coinList: [Coin(id: 90, symbol: "BTC", name: "Bitcoin", price_usd: "7309.76"),
-    Coin(id: 80, symbol: "ETH", name: "Ethereum", price_usd: "131.95"),
-    Coin(id: 58, symbol: "XRP", name: "XRP", price_usd: "0.192645"),
-    Coin(id: 1, symbol: "LTC", name: "Litecoin", price_usd: "41.58"),
-    Coin(id: 2321, symbol: "BCH", name: "Bitcoin Cash", price_usd: "212.45")], accounList: [
-    BankAccount(name: "HSBC", accountType: "Euro Account", price: "2020", currency: "euro", price_usd: "2240"),
-    BankAccount(name: "Credit Suisse", accountType: "USD Custody", price: "1340", currency: "usd", price_usd: "1340"),
-    BankAccount(name: "UBS", accountType: "CHF Account", price: "1471", currency: "CHF", price_usd: "1500")]) {
+    var eurosWidth: CGFloat = 0
+    var dollarWidth: CGFloat = 0
+    
+    var wallet:[MyWallet] = [] {
         didSet {
+            let flat = wallet.flatMap({ $0.currencyList })
+            let compact = flat.compactMap({ getWidth($0.price) })
+            eurosWidth = compact.max() ?? 0
+            
+            let compact1 = flat.compactMap { getWidth($0.price_usd) }
+            dollarWidth = compact1.max() ?? 0
             tableView.reloadData()
         }
     }
     
-    //    let wallet = Wallet(coinList: self.coins, accounList: )
+    
+    func getWidth(_ string: String) -> CGFloat {
+        return NSString(string: string).size(withAttributes: [.font : UIFont.systemFont(ofSize: 20)]).width
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -58,6 +62,7 @@ class HomeViewController: UIViewController {
         sliderVC.contentView = setupSliderView()
         addChild(sliderVC)
         view.addSubview(sliderVC.view)
+        wallet = MyWallet.getData()
         
     }
     
@@ -168,6 +173,8 @@ class HomeViewController: UIViewController {
     }
     
     func setupSliderView() -> UIView {
+        //TODO: slider view max and mid height only
+        
         let tableViewContainer = ViewBuilder.view()
         tableViewContainer.addSubview(tableView)
         tableView.dataSource = self
@@ -183,28 +190,26 @@ class HomeViewController: UIViewController {
 
 extension HomeViewController : UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        print(section)
-//        print(wallet.coinList.count)
-//        print(wallet.accounList.count)
-//        let walletMirror = Mirror(reflecting: wallet)
-        
-         
-
-        return 5
+        return wallet[section].currencyList.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: tableViewIdentifier, for: indexPath) as! CurrencyCell
+        //TODO: populate cell properties
+        let data = wallet[indexPath.section].currencyList[indexPath.row]
+        let image = UIImage(named: data.image) ?? UIImage(systemName: data.image)
+        cell.name.text = data.name
+        cell.accountType.text = data.accountType
+        cell.dollarAmount.text = data.price_usd
+        cell.eurosAmount.text = data.price
+        cell.icon.image = image
+        cell.eurosWidth = eurosWidth
+        cell.dollarWidth = dollarWidth
         return cell
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        var properties = [String?]()
-        let walletMirror = Mirror(reflecting: wallet)
-        for label in walletMirror.children {
-            properties.append(label.label)
-        }
-        return properties.count
+        return wallet.count
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
