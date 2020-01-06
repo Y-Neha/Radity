@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C51BC76123BF57DD0071ACCA /* Coins.swift in Sources */ = {isa = PBXBuildFile; fileRef = C51BC76023BF57DD0071ACCA /* Coins.swift */; };
 		C522554C23ACF446006FC01D /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C522554B23ACF446006FC01D /* UIColor+Extension.swift */; };
 		C522555023B110F8006FC01D /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C522554F23B110F8006FC01D /* TabBarController.swift */; };
 		C522555223B11144006FC01D /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C522555123B11144006FC01D /* HomeViewController.swift */; };
@@ -15,6 +16,7 @@
 		C53A887223B9DD460036B0FD /* UITabBar+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C53A887123B9DD460036B0FD /* UITabBar+Extension.swift */; };
 		C5B3C6FD23BA343200C56856 /* ShapeBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5B3C6FC23BA343200C56856 /* ShapeBuilder.swift */; };
 		C5B3C6FF23BA386200C56856 /* SliderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5B3C6FE23BA386200C56856 /* SliderViewController.swift */; };
+		C5B3C70123BE2BED00C56856 /* CurrencyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5B3C70023BE2BED00C56856 /* CurrencyCell.swift */; };
 		C5B8349A23ABA6A000575877 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C5B8349923ABA6A000575877 /* Launch Screen.storyboard */; };
 		C5B8349D23ABA92100575877 /* ViewBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5B8349B23ABA92100575877 /* ViewBuilder.swift */; };
 		C5B8349E23ABA92100575877 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5B8349C23ABA92100575877 /* UIView+Extension.swift */; };
@@ -26,6 +28,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		C51BC76023BF57DD0071ACCA /* Coins.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coins.swift; sourceTree = "<group>"; };
 		C522554B23ACF446006FC01D /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		C522554F23B110F8006FC01D /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		C522555123B11144006FC01D /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
@@ -34,6 +37,7 @@
 		C53A887123B9DD460036B0FD /* UITabBar+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITabBar+Extension.swift"; sourceTree = "<group>"; };
 		C5B3C6FC23BA343200C56856 /* ShapeBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShapeBuilder.swift; sourceTree = "<group>"; };
 		C5B3C6FE23BA386200C56856 /* SliderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SliderViewController.swift; sourceTree = "<group>"; };
+		C5B3C70023BE2BED00C56856 /* CurrencyCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyCell.swift; sourceTree = "<group>"; };
 		C5B8349923ABA6A000575877 /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		C5B8349B23ABA92100575877 /* ViewBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewBuilder.swift; sourceTree = "<group>"; };
 		C5B8349C23ABA92100575877 /* UIView+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
@@ -57,6 +61,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C51BC75F23BF57C70071ACCA /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				C51BC76023BF57DD0071ACCA /* Coins.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		C522554A23ACF423006FC01D /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -85,6 +97,7 @@
 				C522555323B1115F006FC01D /* PortfoliosViewController.swift */,
 				C522555523B1116D006FC01D /* MoreViewController.swift */,
 				C5B3C6FE23BA386200C56856 /* SliderViewController.swift */,
+				C5B3C70023BE2BED00C56856 /* CurrencyCell.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -108,6 +121,7 @@
 		C5D0FD6623AA6D9C00D7CF02 /* Radity */ = {
 			isa = PBXGroup;
 			children = (
+				C51BC75F23BF57C70071ACCA /* Models */,
 				C522554A23ACF423006FC01D /* Extensions */,
 				C5B834A423ABACF700575877 /* View Controllers */,
 				C5B834A323ABACD800575877 /* Utilities */,
@@ -195,7 +209,9 @@
 				C5B3C6FD23BA343200C56856 /* ShapeBuilder.swift in Sources */,
 				C5D0FD6823AA6D9C00D7CF02 /* AppDelegate.swift in Sources */,
 				C5B3C6FF23BA386200C56856 /* SliderViewController.swift in Sources */,
+				C51BC76123BF57DD0071ACCA /* Coins.swift in Sources */,
 				C53A887223B9DD460036B0FD /* UITabBar+Extension.swift in Sources */,
+				C5B3C70123BE2BED00C56856 /* CurrencyCell.swift in Sources */,
 				C522555023B110F8006FC01D /* TabBarController.swift in Sources */,
 				C5B8349E23ABA92100575877 /* UIView+Extension.swift in Sources */,
 				C522555623B1116D006FC01D /* MoreViewController.swift in Sources */,

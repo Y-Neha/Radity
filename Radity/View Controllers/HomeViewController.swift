@@ -14,13 +14,12 @@ class HomeViewController: UIViewController {
     let vStack = ViewBuilder.stackview()
     let hStack = ViewBuilder.stackview()
     let balanceStack = ViewBuilder.stackview()
-    let balanceLabel = ViewBuilder.label()
-    let balanceAmount = ViewBuilder.label()
-    
-    
     let cryptoStack = ViewBuilder.stackview()
     let cashStack = ViewBuilder.stackview()
     let custodyStack = ViewBuilder.stackview()
+    
+    let balanceLabel = ViewBuilder.label()
+    let balanceAmount = ViewBuilder.label()
     let cryptoLabel = ViewBuilder.label()
     let cryptoAmount = ViewBuilder.label()
     let cashLabel = ViewBuilder.label()
@@ -28,6 +27,24 @@ class HomeViewController: UIViewController {
     let custodyLabel = ViewBuilder.label()
     let custodyAmount = ViewBuilder.label()
     
+    let tableView = ViewBuilder.tableView
+    let tableViewIdentifier = "tableCell"
+    
+
+    var wallet = Wallet(coinList: [Coin(id: 90, symbol: "BTC", name: "Bitcoin", price_usd: "7309.76"),
+    Coin(id: 80, symbol: "ETH", name: "Ethereum", price_usd: "131.95"),
+    Coin(id: 58, symbol: "XRP", name: "XRP", price_usd: "0.192645"),
+    Coin(id: 1, symbol: "LTC", name: "Litecoin", price_usd: "41.58"),
+    Coin(id: 2321, symbol: "BCH", name: "Bitcoin Cash", price_usd: "212.45")], accounList: [
+    BankAccount(name: "HSBC", accountType: "Euro Account", price: "2020", currency: "euro", price_usd: "2240"),
+    BankAccount(name: "Credit Suisse", accountType: "USD Custody", price: "1340", currency: "usd", price_usd: "1340"),
+    BankAccount(name: "UBS", accountType: "CHF Account", price: "1471", currency: "CHF", price_usd: "1500")]) {
+        didSet {
+            tableView.reloadData()
+        }
+    }
+    
+    //    let wallet = Wallet(coinList: self.coins, accounList: )
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,8 +55,10 @@ class HomeViewController: UIViewController {
         setupHomeView()
         
         let sliderVC = SliderViewController()
+        sliderVC.contentView = setupSliderView()
         addChild(sliderVC)
         view.addSubview(sliderVC.view)
+        
     }
     
     func setupHomeView() {
@@ -52,7 +71,6 @@ class HomeViewController: UIViewController {
         setupBalanceStackView()
         setupCurrencyStackView()
         setupLabels()
-        
     }
     
     func setupContainerView() {
@@ -108,8 +126,6 @@ class HomeViewController: UIViewController {
     }
     
     func setupLabels() {
-        
-        //TODO: change font size and check spacing between balance and its amount
         balanceLabel.text = "BALANCE"
         balanceLabel.textColor = .white
         balanceLabel.font = UIFont(name: "Avenir", size: 12)
@@ -150,6 +166,63 @@ class HomeViewController: UIViewController {
         custodyAmount.font = UIFont(name: "Avenir-Black", size: 24)
         custodyAmount.textAlignment = .center
     }
+    
+    func setupSliderView() -> UIView {
+        let tableViewContainer = ViewBuilder.view()
+        tableViewContainer.addSubview(tableView)
+        tableView.dataSource = self
+        tableView.delegate = self
+        tableView.register(CurrencyCell.self, forCellReuseIdentifier: tableViewIdentifier)
+        tableView.fill(parent: tableViewContainer)
+        tableView.topAnchor.constraint(equalTo: tableViewContainer.topAnchor).isActive = true
+        tableView.tableFooterView = UIView()
+        return tableViewContainer
+    }
+}
+
+
+extension HomeViewController : UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+//        print(section)
+//        print(wallet.coinList.count)
+//        print(wallet.accounList.count)
+//        let walletMirror = Mirror(reflecting: wallet)
+        
+         
+
+        return 5
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: tableViewIdentifier, for: indexPath) as! CurrencyCell
+        return cell
+    }
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        var properties = [String?]()
+        let walletMirror = Mirror(reflecting: wallet)
+        for label in walletMirror.children {
+            properties.append(label.label)
+        }
+        return properties.count
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let headerView = ViewBuilder.view()
+        headerView.backgroundColor = UIColor(rgb: 0xEBEBEB)
+        let isHidden = section == 0 ? true : false
+        headerView.isHidden = isHidden
+        return headerView
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 10
+    }
+    
+}
+
+extension HomeViewController: UITableViewDelegate {
+    
 }
 
 #if canImport(SwiftUI) && DEBUG
