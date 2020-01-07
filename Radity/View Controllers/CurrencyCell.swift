@@ -57,6 +57,8 @@ class CurrencyCell: UITableViewCell {
         icon.widthAnchor.constraint(equalToConstant: 44).isActive = true
         icon.contentMode = .scaleAspectFit
         icon.tintColor = .darkGray
+        eurosAmount.textAlignment = .right
+        dollarAmount.textAlignment = .right
         hStack.addArrangedSubview(icon)
         hStack.addArrangedSubview(vStack)
         hStack.addArrangedSubview(eurosAmount)

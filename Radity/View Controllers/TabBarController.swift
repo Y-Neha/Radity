@@ -30,9 +30,11 @@ class TabBarController: UITabBarController {
         moreVC.tabBarItem = UITabBarItem(title: "More", image: UIImage(systemName: "text.alignleft"), selectedImage: nil)
         viewControllers = [portfoliosVC, walletVC, homeVC, notificationVC, moreVC]
         tabBar.addShape()
-        
     }
-
+    
+    override func viewDidAppear(_ animated: Bool) {
+        selectedIndex = 2
+    }
 }
 
 

@@ -201,7 +201,7 @@ extension HomeViewController : UITableViewDataSource {
         cell.name.text = data.name
         cell.accountType.text = data.accountType
         cell.dollarAmount.text = data.price_usd
-        cell.eurosAmount.text = data.price
+        cell.eurosAmount.text = data.currency + data.price
         cell.icon.image = image
         cell.eurosWidth = eurosWidth
         cell.dollarWidth = dollarWidth

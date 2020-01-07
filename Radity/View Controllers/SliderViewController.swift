@@ -15,11 +15,10 @@ class SliderViewController: UIViewController {
     
     private var recognizer: UIPanGestureRecognizer!
     private let anchor = UIView()
-    private lazy var upperY: CGFloat = { view.frame.height * 1.5 }()
     private lazy var lowerY: CGFloat = { view.frame.height / 2 + offset }()
     private lazy var midY: CGFloat = { lowerY + 240 }()
     
-    private func clamp(value: CGFloat) -> CGFloat { [lowerY, midY, upperY].min { abs($0 - value) < abs($1 - value)}! }
+    private func clamp(value: CGFloat) -> CGFloat { [lowerY, midY].min { abs($0 - value) < abs($1 - value)}! }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,9 +29,8 @@ class SliderViewController: UIViewController {
         setupContentView()
         
         
-        //        //TODO: FixMe
-        //        view.center = CGPoint(x: view.center.x, y: midY)
-        //        recognizer.setTranslation(CGPoint.zero, in: self.view)
+        view.center = CGPoint(x: view.center.x, y: midY)
+        recognizer.setTranslation(CGPoint.zero, in: self.view)
     }
     
     private func setupFrame() {
@@ -82,7 +80,7 @@ class SliderViewController: UIViewController {
         if recognizer.state == .began || recognizer.state == .changed {
             let translation = recognizer.translation(in: self.view)
             var point = CGPoint(x: view.center.x, y: view.center.y + translation.y)
-            point.y = min(max(point.y, lowerY), upperY)
+            point.y = max(point.y, lowerY)
             view.center = point
             recognizer.setTranslation(CGPoint.zero, in: self.view)
         }
