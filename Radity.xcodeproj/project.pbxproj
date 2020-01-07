@@ -3,17 +3,19 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B29F8B43247646733C46887A /* Pods_Radity.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4E6AB228864149E26AEBA7D /* Pods_Radity.framework */; };
 		C51BC76123BF57DD0071ACCA /* Coins.swift in Sources */ = {isa = PBXBuildFile; fileRef = C51BC76023BF57DD0071ACCA /* Coins.swift */; };
 		C522554C23ACF446006FC01D /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C522554B23ACF446006FC01D /* UIColor+Extension.swift */; };
 		C522555023B110F8006FC01D /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C522554F23B110F8006FC01D /* TabBarController.swift */; };
 		C522555223B11144006FC01D /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C522555123B11144006FC01D /* HomeViewController.swift */; };
 		C522555423B1115F006FC01D /* PortfoliosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C522555323B1115F006FC01D /* PortfoliosViewController.swift */; };
-		C522555623B1116D006FC01D /* MoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C522555523B1116D006FC01D /* MoreViewController.swift */; };
+		C522555623B1116D006FC01D /* MarketViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C522555523B1116D006FC01D /* MarketViewController.swift */; };
 		C53A887223B9DD460036B0FD /* UITabBar+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C53A887123B9DD460036B0FD /* UITabBar+Extension.swift */; };
+		C54C15AA23C4A0F800B5972C /* JSONDecoder+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C54C15A923C4A0F800B5972C /* JSONDecoder+Extension.swift */; };
 		C5B3C6FD23BA343200C56856 /* ShapeBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5B3C6FC23BA343200C56856 /* ShapeBuilder.swift */; };
 		C5B3C6FF23BA386200C56856 /* SliderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5B3C6FE23BA386200C56856 /* SliderViewController.swift */; };
 		C5B3C70123BE2BED00C56856 /* CurrencyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5B3C70023BE2BED00C56856 /* CurrencyCell.swift */; };
@@ -25,16 +27,21 @@
 		C5D0FD6A23AA6D9C00D7CF02 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5D0FD6923AA6D9C00D7CF02 /* SceneDelegate.swift */; };
 		C5D0FD6F23AA6D9C00D7CF02 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C5D0FD6D23AA6D9C00D7CF02 /* Main.storyboard */; };
 		C5D0FD7123AA6D9F00D7CF02 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C5D0FD7023AA6D9F00D7CF02 /* Assets.xcassets */; };
+		C5DC3DDD23C478EE000CB125 /* MarketService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5DC3DDC23C478EE000CB125 /* MarketService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		93E416CFC32B6FE34292FC37 /* Pods-Radity.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Radity.release.xcconfig"; path = "Target Support Files/Pods-Radity/Pods-Radity.release.xcconfig"; sourceTree = "<group>"; };
+		9FFB626795544113C270A45B /* Pods-Radity.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Radity.debug.xcconfig"; path = "Target Support Files/Pods-Radity/Pods-Radity.debug.xcconfig"; sourceTree = "<group>"; };
+		A4E6AB228864149E26AEBA7D /* Pods_Radity.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Radity.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C51BC76023BF57DD0071ACCA /* Coins.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coins.swift; sourceTree = "<group>"; };
 		C522554B23ACF446006FC01D /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		C522554F23B110F8006FC01D /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		C522555123B11144006FC01D /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		C522555323B1115F006FC01D /* PortfoliosViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortfoliosViewController.swift; sourceTree = "<group>"; };
-		C522555523B1116D006FC01D /* MoreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreViewController.swift; sourceTree = "<group>"; };
+		C522555523B1116D006FC01D /* MarketViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketViewController.swift; sourceTree = "<group>"; };
 		C53A887123B9DD460036B0FD /* UITabBar+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITabBar+Extension.swift"; sourceTree = "<group>"; };
+		C54C15A923C4A0F800B5972C /* JSONDecoder+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "JSONDecoder+Extension.swift"; sourceTree = "<group>"; };
 		C5B3C6FC23BA343200C56856 /* ShapeBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShapeBuilder.swift; sourceTree = "<group>"; };
 		C5B3C6FE23BA386200C56856 /* SliderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SliderViewController.swift; sourceTree = "<group>"; };
 		C5B3C70023BE2BED00C56856 /* CurrencyCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyCell.swift; sourceTree = "<group>"; };
@@ -48,6 +55,7 @@
 		C5D0FD6E23AA6D9C00D7CF02 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C5D0FD7023AA6D9F00D7CF02 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C5D0FD7523AA6D9F00D7CF02 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C5DC3DDC23C478EE000CB125 /* MarketService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,12 +63,30 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B29F8B43247646733C46887A /* Pods_Radity.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		328242E59306D8CD5923CB8D /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				9FFB626795544113C270A45B /* Pods-Radity.debug.xcconfig */,
+				93E416CFC32B6FE34292FC37 /* Pods-Radity.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		5377FC493DCBEA2DAC334532 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A4E6AB228864149E26AEBA7D /* Pods_Radity.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		C51BC75F23BF57C70071ACCA /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -75,6 +101,7 @@
 				C522554B23ACF446006FC01D /* UIColor+Extension.swift */,
 				C53A887123B9DD460036B0FD /* UITabBar+Extension.swift */,
 				C5B8349C23ABA92100575877 /* UIView+Extension.swift */,
+				C54C15A923C4A0F800B5972C /* JSONDecoder+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -95,7 +122,7 @@
 				C522554F23B110F8006FC01D /* TabBarController.swift */,
 				C522555123B11144006FC01D /* HomeViewController.swift */,
 				C522555323B1115F006FC01D /* PortfoliosViewController.swift */,
-				C522555523B1116D006FC01D /* MoreViewController.swift */,
+				C522555523B1116D006FC01D /* MarketViewController.swift */,
 				C5B3C6FE23BA386200C56856 /* SliderViewController.swift */,
 				C5B3C70023BE2BED00C56856 /* CurrencyCell.swift */,
 			);
@@ -107,6 +134,8 @@
 			children = (
 				C5D0FD6623AA6D9C00D7CF02 /* Radity */,
 				C5D0FD6523AA6D9C00D7CF02 /* Products */,
+				328242E59306D8CD5923CB8D /* Pods */,
+				5377FC493DCBEA2DAC334532 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -121,6 +150,7 @@
 		C5D0FD6623AA6D9C00D7CF02 /* Radity */ = {
 			isa = PBXGroup;
 			children = (
+				C5DC3DDB23C47830000CB125 /* Service Manager */,
 				C51BC75F23BF57C70071ACCA /* Models */,
 				C522554A23ACF423006FC01D /* Extensions */,
 				C5B834A423ABACF700575877 /* View Controllers */,
@@ -135,6 +165,14 @@
 			path = Radity;
 			sourceTree = "<group>";
 		};
+		C5DC3DDB23C47830000CB125 /* Service Manager */ = {
+			isa = PBXGroup;
+			children = (
+				C5DC3DDC23C478EE000CB125 /* MarketService.swift */,
+			);
+			path = "Service Manager";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -142,9 +180,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C5D0FD7823AA6D9F00D7CF02 /* Build configuration list for PBXNativeTarget "Radity" */;
 			buildPhases = (
+				11CFEF10CE69E71C3C4F88A2 /* [CP] Check Pods Manifest.lock */,
 				C5D0FD6023AA6D9C00D7CF02 /* Sources */,
 				C5D0FD6123AA6D9C00D7CF02 /* Frameworks */,
 				C5D0FD6223AA6D9C00D7CF02 /* Resources */,
+				44A35D0A5565E827BF3EC9EE /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -201,6 +241,48 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		11CFEF10CE69E71C3C4F88A2 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Radity-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		44A35D0A5565E827BF3EC9EE /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Radity/Pods-Radity-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Radity/Pods-Radity-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Radity/Pods-Radity-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		C5D0FD6023AA6D9C00D7CF02 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -209,12 +291,14 @@
 				C5B3C6FD23BA343200C56856 /* ShapeBuilder.swift in Sources */,
 				C5D0FD6823AA6D9C00D7CF02 /* AppDelegate.swift in Sources */,
 				C5B3C6FF23BA386200C56856 /* SliderViewController.swift in Sources */,
+				C5DC3DDD23C478EE000CB125 /* MarketService.swift in Sources */,
 				C51BC76123BF57DD0071ACCA /* Coins.swift in Sources */,
 				C53A887223B9DD460036B0FD /* UITabBar+Extension.swift in Sources */,
 				C5B3C70123BE2BED00C56856 /* CurrencyCell.swift in Sources */,
 				C522555023B110F8006FC01D /* TabBarController.swift in Sources */,
 				C5B8349E23ABA92100575877 /* UIView+Extension.swift in Sources */,
-				C522555623B1116D006FC01D /* MoreViewController.swift in Sources */,
+				C522555623B1116D006FC01D /* MarketViewController.swift in Sources */,
+				C54C15AA23C4A0F800B5972C /* JSONDecoder+Extension.swift in Sources */,
 				C5B8349D23ABA92100575877 /* ViewBuilder.swift in Sources */,
 				C522555423B1115F006FC01D /* PortfoliosViewController.swift in Sources */,
 				C522555223B11144006FC01D /* HomeViewController.swift in Sources */,
@@ -354,6 +438,7 @@
 		};
 		C5D0FD7923AA6D9F00D7CF02 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9FFB626795544113C270A45B /* Pods-Radity.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -372,6 +457,7 @@
 		};
 		C5D0FD7A23AA6D9F00D7CF02 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 93E416CFC32B6FE34292FC37 /* Pods-Radity.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;

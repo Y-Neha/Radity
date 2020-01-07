@@ -21,14 +21,15 @@ class TabBarController: UITabBarController {
         let walletVC = PortfoliosViewController()
         let homeVC = HomeViewController()
         let notificationVC = PortfoliosViewController()
-        let moreVC = MoreViewController()
+        let marketVC = MarketViewController()
+
     
         portfoliosVC.tabBarItem = UITabBarItem(title: "Portfolio", image: UIImage(systemName: "bitcoinsign.circle.fill"), selectedImage: nil)
         walletVC.tabBarItem = UITabBarItem(title: "Wallet", image: UIImage(systemName: "bag.fill"), selectedImage: nil)
         homeVC.tabBarItem = UITabBarItem(title: "Home", image: UIImage(named: "home"), selectedImage: nil)
         notificationVC.tabBarItem = UITabBarItem(title: "Notification", image: UIImage(systemName: "bell.fill"), selectedImage: nil)
-        moreVC.tabBarItem = UITabBarItem(title: "More", image: UIImage(systemName: "text.alignleft"), selectedImage: nil)
-        viewControllers = [portfoliosVC, walletVC, homeVC, notificationVC, moreVC]
+        marketVC.tabBarItem = UITabBarItem(title: "Market", image: UIImage(systemName: "dollarsign.circle.fill"), selectedImage: nil)
+        viewControllers = [portfoliosVC, walletVC, homeVC, notificationVC, marketVC]
         tabBar.addShape()
     }
     
@@ -36,6 +37,7 @@ class TabBarController: UITabBarController {
         selectedIndex = 2
     }
 }
+
 
 
 

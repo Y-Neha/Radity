@@ -50,3 +50,17 @@ struct MyWallet {
 
 //Change Notification tab to news
 
+struct MarketCoin: Codable {
+    let id: String
+    let symbol: String
+    let name: String
+    let price_usd: String
+    let percent_change_24h: String
+    let percent_change_1h: String
+    let percent_change_7d: String
+}
+
+struct MarketCoinList: Codable {
+    let data: [MarketCoin]
+}
+
