@@ -9,12 +9,12 @@
 import UIKit
 
 struct ViewBuilder {
-    static let tableView: UITableView = {
+    static func tableView() -> UITableView  {
         let tableView = UITableView()
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.showsVerticalScrollIndicator = false
         return tableView
-    }()
+    }
     
     static let largeTitle: UILabel = {
         let title = UILabel()

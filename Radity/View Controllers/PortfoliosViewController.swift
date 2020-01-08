@@ -8,23 +8,78 @@
 
 import UIKit
 
-class PortfoliosViewController: UIViewController {
+struct Country: Hashable {
+    let name: String
+    let identifier = UUID()
+}
 
+enum Section: CaseIterable {
+    case main
+}
+
+class PortfoliosViewController: UIViewController {
+    let tableview = ViewBuilder.tableView()
+    let indentifier = "cell"
+    var countries: [Country] = []
+    private lazy var dataSource = makeDataSource()
+    private typealias countryDataSource = UITableViewDiffableDataSource<Section, Country>
+    private typealias countrySnapshot = NSDiffableDataSourceSnapshot<Section, Country>
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        setupTableview()
+        setupCountryArray()
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    func setupTableview() {
+        view.addSubview(tableview)
+        tableview.register(UITableViewCell.self, forCellReuseIdentifier: indentifier)
+        tableview.dataSource = dataSource
+        print("dataSource",dataSource)
+        tableview.fill(parent: view)
     }
-    */
+    
+    func setupCountryArray() {
+        let countryNames = ["Afghanistan",
+                            "Albania",
+                            "Algeria",
+                            "Andorra",
+                            "Angola",
+                            "Antigua and Barbuda",
+                            "Argentina",
+                            "Armenia",
+                            "Australia",
+                            "Austria",
+                            "Azerbaijan",
+                            "Bahamas",
+                            "Bahrain",
+                            "Bangladesh",
+                            "Barbados",
+                            "Belarus"]
+        for name in countryNames {
+            countries.append(Country(name: name))
+        }
+        
+        update(with: countries)
+    }
+}
 
+extension PortfoliosViewController {
+    private func makeDataSource() -> countryDataSource {
+        let reuseIdentifier = indentifier
+        print("makeDatasource")
+        return UITableViewDiffableDataSource(tableView: tableview) { (tableview, indexpath, country) -> UITableViewCell? in
+            let cell = tableview.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexpath)
+            print("countryname", country.name)
+            cell.textLabel?.text = country.name
+            return cell
+        }
+    }
+    
+    func update(with list: [Country], animate: Bool = true) {
+        var snapshot = countrySnapshot()
+        snapshot.appendSections(Section.allCases)
+        snapshot.appendItems(list, toSection: .main)
+        dataSource.apply(snapshot, animatingDifferences: animate)
+    }
 }

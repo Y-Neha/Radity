@@ -33,9 +33,9 @@ class TabBarController: UITabBarController {
         tabBar.addShape()
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        selectedIndex = 2
-    }
+//    override func viewDidAppear(_ animated: Bool) {
+//        selectedIndex = 2
+//    }
 }
 
 

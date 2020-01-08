@@ -27,7 +27,7 @@ class HomeViewController: UIViewController {
     let custodyLabel = ViewBuilder.label()
     let custodyAmount = ViewBuilder.label()
     
-    let tableView = ViewBuilder.tableView
+    let tableView = ViewBuilder.tableView()
     let tableViewIdentifier = "tableCell"
     
     var eurosWidth: CGFloat = 0
@@ -195,7 +195,6 @@ extension HomeViewController : UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: tableViewIdentifier, for: indexPath) as! CurrencyCell
-        //TODO: populate cell properties
         let data = wallet[indexPath.section].currencyList[indexPath.row]
         let image = UIImage(named: data.image) ?? UIImage(systemName: data.image)
         cell.name.text = data.name
