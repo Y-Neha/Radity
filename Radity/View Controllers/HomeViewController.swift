@@ -210,7 +210,9 @@ extension HomeViewController : UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
         return wallet.count
     }
-    
+}
+
+extension HomeViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let headerView = ViewBuilder.view()
         headerView.backgroundColor = UIColor(rgb: 0xEBEBEB)
@@ -222,11 +224,6 @@ extension HomeViewController : UITableViewDataSource {
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 10
     }
-    
-}
-
-extension HomeViewController: UITableViewDelegate {
-    
 }
 
 #if canImport(SwiftUI) && DEBUG

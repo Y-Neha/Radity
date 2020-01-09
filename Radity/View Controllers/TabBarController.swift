@@ -18,12 +18,11 @@ class TabBarController: UITabBarController {
         tabBar.backgroundColor = .white
         
         let portfoliosVC = PortfoliosViewController()
-        let walletVC = PortfoliosViewController()
+        let walletVC = WalletViewController()
         let homeVC = HomeViewController()
-        let notificationVC = PortfoliosViewController()
+        let notificationVC = NotificationViewController()
         let marketVC = MarketViewController()
 
-    
         portfoliosVC.tabBarItem = UITabBarItem(title: "Portfolio", image: UIImage(systemName: "bitcoinsign.circle.fill"), selectedImage: nil)
         walletVC.tabBarItem = UITabBarItem(title: "Wallet", image: UIImage(systemName: "bag.fill"), selectedImage: nil)
         homeVC.tabBarItem = UITabBarItem(title: "Home", image: UIImage(named: "home"), selectedImage: nil)
@@ -33,9 +32,9 @@ class TabBarController: UITabBarController {
         tabBar.addShape()
     }
     
-//    override func viewDidAppear(_ animated: Bool) {
-//        selectedIndex = 2
-//    }
+    override func viewDidAppear(_ animated: Bool) {
+        selectedIndex = 2
+    }
 }
 
 

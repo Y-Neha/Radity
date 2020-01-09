@@ -35,7 +35,6 @@ class PortfoliosViewController: UIViewController {
         view.addSubview(tableview)
         tableview.register(UITableViewCell.self, forCellReuseIdentifier: indentifier)
         tableview.dataSource = dataSource
-        print("dataSource",dataSource)
         tableview.fill(parent: view)
     }
     
@@ -59,7 +58,6 @@ class PortfoliosViewController: UIViewController {
         for name in countryNames {
             countries.append(Country(name: name))
         }
-        
         update(with: countries)
     }
 }
@@ -67,10 +65,8 @@ class PortfoliosViewController: UIViewController {
 extension PortfoliosViewController {
     private func makeDataSource() -> countryDataSource {
         let reuseIdentifier = indentifier
-        print("makeDatasource")
         return UITableViewDiffableDataSource(tableView: tableview) { (tableview, indexpath, country) -> UITableViewCell? in
             let cell = tableview.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexpath)
-            print("countryname", country.name)
             cell.textLabel?.text = country.name
             return cell
         }
@@ -81,5 +77,12 @@ extension PortfoliosViewController {
         snapshot.appendSections(Section.allCases)
         snapshot.appendItems(list, toSection: .main)
         dataSource.apply(snapshot, animatingDifferences: animate)
+    }
+}
+
+extension PortfoliosViewController: UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        return UIView()
     }
 }

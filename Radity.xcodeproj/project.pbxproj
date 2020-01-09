@@ -23,6 +23,8 @@
 		C5B8349D23ABA92100575877 /* ViewBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5B8349B23ABA92100575877 /* ViewBuilder.swift */; };
 		C5B8349E23ABA92100575877 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5B8349C23ABA92100575877 /* UIView+Extension.swift */; };
 		C5B834A223ABABFF00575877 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5B834A123ABABFF00575877 /* LoginViewController.swift */; };
+		C5B8D3BB23C70B4500092D01 /* NotificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5B8D3BA23C70B4500092D01 /* NotificationViewController.swift */; };
+		C5B8D3BD23C70B9A00092D01 /* WalletViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5B8D3BC23C70B9A00092D01 /* WalletViewController.swift */; };
 		C5D0FD6823AA6D9C00D7CF02 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5D0FD6723AA6D9C00D7CF02 /* AppDelegate.swift */; };
 		C5D0FD6A23AA6D9C00D7CF02 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5D0FD6923AA6D9C00D7CF02 /* SceneDelegate.swift */; };
 		C5D0FD6F23AA6D9C00D7CF02 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C5D0FD6D23AA6D9C00D7CF02 /* Main.storyboard */; };
@@ -49,6 +51,8 @@
 		C5B8349B23ABA92100575877 /* ViewBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewBuilder.swift; sourceTree = "<group>"; };
 		C5B8349C23ABA92100575877 /* UIView+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		C5B834A123ABABFF00575877 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		C5B8D3BA23C70B4500092D01 /* NotificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationViewController.swift; sourceTree = "<group>"; };
+		C5B8D3BC23C70B9A00092D01 /* WalletViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletViewController.swift; sourceTree = "<group>"; };
 		C5D0FD6423AA6D9C00D7CF02 /* Radity.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Radity.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C5D0FD6723AA6D9C00D7CF02 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C5D0FD6923AA6D9C00D7CF02 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -125,6 +129,8 @@
 				C522555523B1116D006FC01D /* MarketViewController.swift */,
 				C5B3C6FE23BA386200C56856 /* SliderViewController.swift */,
 				C5B3C70023BE2BED00C56856 /* CurrencyCell.swift */,
+				C5B8D3BA23C70B4500092D01 /* NotificationViewController.swift */,
+				C5B8D3BC23C70B9A00092D01 /* WalletViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -293,6 +299,7 @@
 				C5B3C6FF23BA386200C56856 /* SliderViewController.swift in Sources */,
 				C5DC3DDD23C478EE000CB125 /* MarketService.swift in Sources */,
 				C51BC76123BF57DD0071ACCA /* Coins.swift in Sources */,
+				C5B8D3BD23C70B9A00092D01 /* WalletViewController.swift in Sources */,
 				C53A887223B9DD460036B0FD /* UITabBar+Extension.swift in Sources */,
 				C5B3C70123BE2BED00C56856 /* CurrencyCell.swift in Sources */,
 				C522555023B110F8006FC01D /* TabBarController.swift in Sources */,
@@ -302,6 +309,7 @@
 				C5B8349D23ABA92100575877 /* ViewBuilder.swift in Sources */,
 				C522555423B1115F006FC01D /* PortfoliosViewController.swift in Sources */,
 				C522555223B11144006FC01D /* HomeViewController.swift in Sources */,
+				C5B8D3BB23C70B4500092D01 /* NotificationViewController.swift in Sources */,
 				C522554C23ACF446006FC01D /* UIColor+Extension.swift in Sources */,
 				C5D0FD6A23AA6D9C00D7CF02 /* SceneDelegate.swift in Sources */,
 				C5B834A223ABABFF00575877 /* LoginViewController.swift in Sources */,
