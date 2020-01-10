@@ -54,6 +54,7 @@ struct MarketCoin: Codable {
     let id: String
     let symbol: String
     let name: String
+    let rank: Int
     let price_usd: String
     let percent_change_24h: String
     let percent_change_1h: String

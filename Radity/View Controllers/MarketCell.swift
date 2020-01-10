@@ -1,32 +1,32 @@
 //
-//  CurrencyCell.swift
+//  MarketCell.swift
 //  Radity
 //
-//  Created by Neha Yadav on 02/01/20.
+//  Created by Neha Yadav on 09/01/20.
 //  Copyright © 2020 Neha Yadav. All rights reserved.
 //
 
 import UIKit
 
-class CurrencyCell: UITableViewCell {
+class MarketCell: UITableViewCell {
     
+    let symbol = ViewBuilder.label()
     let name = ViewBuilder.label()
-    let accountType = ViewBuilder.label()
-    let icon = ViewBuilder.imageView()
-    let eurosAmount = ViewBuilder.label()
+    let rank = ViewBuilder.label()
     let dollarAmount = ViewBuilder.label()
+    let dollarChange = ViewBuilder.label()
     let vStack = ViewBuilder.stackview()
     let hStack = ViewBuilder.stackview()
-    
-    var eurosWidth: CGFloat = 0 {
-        didSet {
-            eurosAmount.widthAnchor.constraint(equalToConstant: eurosWidth).isActive = true
-        }
-    }
     
     var dollarWidth: CGFloat = 0 {
         didSet {
             dollarAmount.widthAnchor.constraint(equalToConstant: dollarWidth).isActive = true
+        }
+    }
+    
+    var dollarChangeWidth: CGFloat = 0 {
+        didSet {
+            dollarChange.widthAnchor.constraint(equalToConstant: dollarChangeWidth).isActive = true
         }
     }
     
@@ -46,25 +46,24 @@ class CurrencyCell: UITableViewCell {
 
         vStack.axis = .vertical
         vStack.spacing = 4
+        vStack.addArrangedSubview(symbol)
         vStack.addArrangedSubview(name)
-        vStack.addArrangedSubview(accountType)
         vStack.backgroundColor = .red
         vStack.alignment = .leading
         hStack.heightAnchor.constraint(equalToConstant: 50).isActive = true
-        name.font = UIFont(name: "Avenir", size: 16)
-        accountType.font = UIFont(name: "Avenir", size: 14)
-        accountType.numberOfLines = 2
-        icon.widthAnchor.constraint(equalToConstant: 44).isActive = true
-        icon.contentMode = .scaleAspectFit
-        icon.tintColor = .darkGray
-        eurosAmount.textAlignment = .right
+        symbol.font = UIFont(name: "Avenir", size: 16)
+        name.numberOfLines = 2
+        name.font = UIFont(name: "Avenir", size: 14)
+        rank.font = UIFont(name: "Avenir", size: 12)
+        rank.widthAnchor.constraint(equalToConstant: 24).isActive = true
         dollarAmount.textAlignment = .right
-        eurosAmount.font = UIFont(name: "Avenir", size: 16)
+        dollarChange.textAlignment = .right
         dollarAmount.font = UIFont(name: "Avenir", size: 16)
-        hStack.addArrangedSubview(icon)
+        dollarChange.font = UIFont(name: "Avenir", size: 16)
+        hStack.addArrangedSubview(rank)
         hStack.addArrangedSubview(vStack)
-        hStack.addArrangedSubview(eurosAmount)
         hStack.addArrangedSubview(dollarAmount)
+        hStack.addArrangedSubview(dollarChange)
     }
     
     required init?(coder: NSCoder) {
@@ -75,9 +74,9 @@ class CurrencyCell: UITableViewCell {
 #if canImport(SwiftUI) && DEBUG
 import SwiftUI
 
-struct CurrencyCellRepresentable: UIViewRepresentable {
+struct MarketCellRepresentable: UIViewRepresentable {
     func makeUIView(context: Context) -> UIView {
-        return CurrencyCell().contentView
+        return MarketCell().contentView
     }
     
     func updateUIView(_ view: UIView, context: Context) {
@@ -86,9 +85,10 @@ struct CurrencyCellRepresentable: UIViewRepresentable {
 }
 
 @available(iOS 13.0, *)
-struct CurrencyCell_Preview: PreviewProvider {
+struct MarketCell_Preview: PreviewProvider {
     static var previews: some View {
-        CurrencyCellRepresentable()
+        MarketCellRepresentable()
     }
 }
 #endif
+
