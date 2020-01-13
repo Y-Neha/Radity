@@ -33,6 +33,11 @@ class HomeViewController: UIViewController {
     var eurosWidth: CGFloat = 0
     var dollarWidth: CGFloat = 0
     
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        .lightContent
+    }
+    
+    
     var wallet:[MyWallet] = [] {
         didSet {
             let flat = wallet.flatMap({ $0.currencyList })

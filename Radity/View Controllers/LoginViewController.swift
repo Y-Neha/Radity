@@ -20,10 +20,6 @@ class LoginViewController: UIViewController {
     let createAccountLabel = ViewBuilder.label()
     let verticalLine = ViewBuilder.view()
     
-    override var preferredStatusBarStyle: UIStatusBarStyle {
-        .lightContent
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupLoginView()

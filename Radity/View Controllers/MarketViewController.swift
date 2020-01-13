@@ -12,9 +12,14 @@ class MarketViewController: UIViewController {
     
     let tableView = ViewBuilder.tableView()
     let identifier = "marketCell"
+    let upIcon = UIImage(systemName: "arrowtriangle.up")
+    let downIcon = UIImage(systemName: "arrowtriangle.down")
+    
     
     var dollarWidth: CGFloat = 0
     var dollarChangeWidth: CGFloat = 0
+    
+    var isAscending = true
     
     var marketCoins:[MarketCoin] = [] {
         didSet{
@@ -36,7 +41,6 @@ class MarketViewController: UIViewController {
         MarketService.getMarketData(url: "https://api.coinlore.com/api/tickers/") { (list) in
             self.marketCoins = list.data
         }
-        //TODO: Ascending and descending order common function
     }
     
     func setupTableview() {
@@ -44,6 +48,7 @@ class MarketViewController: UIViewController {
         tableView.dataSource = self
         tableView.delegate = self
         tableView.fillHorizontally(parent: view)
+        tableView.separatorColor = .white
         tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 0).isActive = true
         tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor).isActive = true
         tableView.register(MarketCell.self, forCellReuseIdentifier: identifier)
@@ -54,43 +59,59 @@ class MarketViewController: UIViewController {
         let headerView = UIView(frame: frame)
         let hStack = ViewBuilder.stackview()
         hStack.axis = .horizontal
-        hStack.backgroundColor = .green
         hStack.distribution = .fillProportionally
         
         headerView.addSubview(hStack)
-        hStack.fill(parent: headerView)
         hStack.fillHorizontally(parent: headerView, margin: 20)
+        hStack.fillVertically(parent: headerView)
         
         let width1 = dollarWidth == 0 ? 60 : dollarWidth
-        let width2 = dollarChangeWidth == 0 ? 60 : dollarChangeWidth
-        
+        let width2 = dollarChangeWidth == 0 || dollarChangeWidth < 60 ? 60 : dollarChangeWidth
         let rankButton = ViewBuilder.button()
         let dollarPriceLabel = ViewBuilder.label()
         let priceChangeLabel = ViewBuilder.label()
         rankButton.setTitle("Rank", for: .normal)
         rankButton.setTitleColor(.white, for: .normal)
-        rankButton.titleLabel?.font = UIFont(name: "Avenir-Black", size: 16)
+        rankButton.titleLabel?.font = UIFont(name: "Avenir", size: 16)
+        rankButton.setImage(upIcon, for: .normal)
+        rankButton.imageView?.contentMode = .scaleAspectFit
+        rankButton.imageEdgeInsets = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 0)
+        rankButton.semanticContentAttribute = .forceRightToLeft
         rankButton.widthAnchor.constraint(equalToConstant: 60).isActive = true
-
+        
         dollarPriceLabel.text = "Price"
         dollarPriceLabel.textColor = .white
         dollarPriceLabel.textAlignment = .right
-        dollarPriceLabel.font = UIFont(name: "Avenir-Black", size: 16)
-
+        dollarPriceLabel.font = UIFont(name: "Avenir", size: 16)
+        
         dollarPriceLabel.widthAnchor.constraint(equalToConstant: width1).isActive = true
         priceChangeLabel.text = "Change"
         priceChangeLabel.textColor = .white
         priceChangeLabel.textAlignment = .right
-        priceChangeLabel.font = UIFont(name: "Avenir-Black", size: 16)
+        priceChangeLabel.font = UIFont(name: "Avenir", size: 16)
         //work
         priceChangeLabel.widthAnchor.constraint(equalToConstant: width2).isActive = true
         hStack.addArrangedSubview(rankButton)
         hStack.addArrangedSubview(dollarPriceLabel)
         hStack.addArrangedSubview(priceChangeLabel)
+        rankButton.addTarget(self, action: #selector(rankPressed(sender:)), for: .touchUpInside)
         return headerView
     }
+    
+    @objc func rankPressed(sender: UIButton) {
+        //TODO: change image of a rank button when toggled, not working
+        isAscending = !isAscending
+        marketCoins = isAscending ? sortMarketInDescOrderByRank().reversed() : sortMarketInDescOrderByRank()
+        let icon = isAscending ? upIcon : downIcon
+        sender.setImage(icon, for: .normal)
+    }
+    
+    func sortMarketInDescOrderByRank() -> [MarketCoin] {
+        //TODO: add more generics to a sort function
+        let sortedArray = marketCoins.propertySorted({$0.rank})
+        return sortedArray
+    }
 }
-
 
 extension MarketViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -112,7 +133,6 @@ extension MarketViewController: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
-    
 }
 
 extension MarketViewController: UITableViewDelegate {
@@ -121,7 +141,6 @@ extension MarketViewController: UITableViewDelegate {
         let headerView = setupHeaderView(frame: CGRect(x: 0, y: 0, width: tableView.frame.width, height: 0))
         let isHidden = marketCoins.count == 0 ? true : false
         headerView.isHidden = isHidden
-        
         headerView.backgroundColor = UIColor(rgb: 0x0f1847)
         return headerView
     }

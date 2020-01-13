@@ -32,7 +32,7 @@ class MarketCell: UITableViewCell {
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        
+        contentView.backgroundColor = UIColor(rgb: 0x0f1847)
         contentView.addSubview(hStack)
         setupCellView()
     }
@@ -51,15 +51,20 @@ class MarketCell: UITableViewCell {
         vStack.backgroundColor = .red
         vStack.alignment = .leading
         hStack.heightAnchor.constraint(equalToConstant: 50).isActive = true
-        symbol.font = UIFont(name: "Avenir", size: 16)
+        symbol.font = UIFont(name: "Avenir-Black", size: 16)
+        symbol.textColor = .white
         name.numberOfLines = 2
         name.font = UIFont(name: "Avenir", size: 14)
+        name.textColor = .white
         rank.font = UIFont(name: "Avenir", size: 12)
+        rank.textColor = .white
         rank.widthAnchor.constraint(equalToConstant: 24).isActive = true
         dollarAmount.textAlignment = .right
         dollarChange.textAlignment = .right
-        dollarAmount.font = UIFont(name: "Avenir", size: 16)
-        dollarChange.font = UIFont(name: "Avenir", size: 16)
+        dollarAmount.font = UIFont(name: "Avenir-Black", size: 16)
+        dollarChange.font = UIFont(name: "Avenir-Black", size: 16)
+        dollarAmount.textColor = .white
+        dollarChange.textColor = .white
         hStack.addArrangedSubview(rank)
         hStack.addArrangedSubview(vStack)
         hStack.addArrangedSubview(dollarAmount)
