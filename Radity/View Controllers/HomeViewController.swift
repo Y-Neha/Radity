@@ -41,10 +41,10 @@ class HomeViewController: UIViewController {
     var wallet:[MyWallet] = [] {
         didSet {
             let flat = wallet.flatMap({ $0.currencyList })
-            let compact = flat.compactMap({ getWidth($0.price) })
+            let compact = flat.compactMap({ getWidth(String($0.price)) + getWidth($0.currency)})
             eurosWidth = compact.max() ?? 0
             
-            let compact1 = flat.compactMap { getWidth($0.price_usd) }
+            let compact1 = flat.compactMap { getWidth(String($0.price_usd)) }
             dollarWidth = compact1.max() ?? 0
             tableView.reloadData()
         }
@@ -204,8 +204,8 @@ extension HomeViewController : UITableViewDataSource {
         let image = UIImage(named: data.image) ?? UIImage(systemName: data.image)
         cell.name.text = data.name
         cell.accountType.text = data.accountType
-        cell.dollarAmount.text = data.price_usd
-        cell.eurosAmount.text = data.currency + data.price
+        cell.dollarAmount.text = "$\(data.price_usd.addCommas())"
+        cell.eurosAmount.text = data.currency + "\(data.price.addCommas())"
         cell.icon.image = image
         cell.eurosWidth = eurosWidth
         cell.dollarWidth = dollarWidth

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SkeletonView
 
 class MarketViewController: UIViewController {
     
@@ -14,11 +15,8 @@ class MarketViewController: UIViewController {
     let identifier = "marketCell"
     let upIcon = UIImage(systemName: "arrowtriangle.up")
     let downIcon = UIImage(systemName: "arrowtriangle.down")
-    
-    
     var dollarWidth: CGFloat = 0
     var dollarChangeWidth: CGFloat = 0
-    
     var isAscending = true
     
     var marketCoins:[MarketCoin] = [] {
@@ -27,6 +25,7 @@ class MarketViewController: UIViewController {
             dollarWidth = dollarflatmap.max() ?? 0
             let dollarChangeflatmap = marketCoins.compactMap {getWidth($0.percent_change_24h)}
             dollarChangeWidth = dollarChangeflatmap.max() ?? 0
+//            hideSkeleton()
             tableView.reloadData()
         }
     }
@@ -37,11 +36,17 @@ class MarketViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+//        tableView.isSkeletonable = true
         setupTableview()
+//        showSkeleton()
         MarketService.getMarketData(url: "https://api.coinlore.com/api/tickers/") { (list) in
             self.marketCoins = list.data
         }
     }
+    
+//    override func viewDidLayoutSubviews() {
+//        view.layoutSkeletonIfNeeded()
+//    }
     
     func setupTableview() {
         view.addSubview(tableView)
@@ -89,7 +94,6 @@ class MarketViewController: UIViewController {
         priceChangeLabel.textColor = .white
         priceChangeLabel.textAlignment = .right
         priceChangeLabel.font = UIFont(name: "Avenir", size: 16)
-        //work
         priceChangeLabel.widthAnchor.constraint(equalToConstant: width2).isActive = true
         hStack.addArrangedSubview(rankButton)
         hStack.addArrangedSubview(dollarPriceLabel)
@@ -111,6 +115,14 @@ class MarketViewController: UIViewController {
         let sortedArray = marketCoins.propertySorted({$0.rank})
         return sortedArray
     }
+    
+//    func showSkeleton() {
+//        view.showSkeleton(transition: .crossDissolve(0.25))
+//    }
+//
+//    func hideSkeleton() {
+//        view.hideSkeleton(transition: .crossDissolve(0.25))
+//    }
 }
 
 extension MarketViewController: UITableViewDataSource {
@@ -120,12 +132,17 @@ extension MarketViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath) as! MarketCell
+        cell.isSkeletonable = true
         let marketCoin = marketCoins[indexPath.row]
         cell.symbol.text = marketCoin.symbol
         cell.name.text = marketCoin.name
         cell.rank.text = "\(marketCoin.rank)"
-        cell.dollarAmount.text = "$\(marketCoin.price_usd)"
-        cell.dollarChange.text = "$\(marketCoin.percent_change_24h)"
+        if let dollar = Float(marketCoin.price_usd) {
+            cell.dollarAmount.text = "$\(dollar.addCommas())"
+        }
+        if let dollarChange = Float(marketCoin.percent_change_24h) {
+            cell.dollarChange.text = "$\(dollarChange.addCommas())"
+        }
         cell.dollarWidth = dollarWidth
         cell.dollarChangeWidth = dollarChangeWidth
         return cell
@@ -150,6 +167,20 @@ extension MarketViewController: UITableViewDelegate {
     }
 }
 
+//extension MarketViewController: SkeletonTableViewDataSource {
+//    func collectionSkeletonView(_ skeletonView: UITableView, numberOfRowsInSection section: Int) -> Int {
+//        return 10
+//    }
+//
+//    func collectionSkeletonView(_ skeletonView: UITableView, cellIdentifierForRowAt indexPath: IndexPath) -> ReusableCellIdentifier {
+//        return identifier
+//    }
+//
+//    func collectionSkeletonView(_ skeletonView: UITableView, cellIdentifierForRowAt indexPath: IndexPath) -> UITableViewCell {
+//        let cell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath) as! MarketCell
+//        return cell
+//    }
+//}
 
 #if canImport(SwiftUI) && DEBUG
 import SwiftUI

@@ -33,6 +33,7 @@
 		C5D0FD6F23AA6D9C00D7CF02 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C5D0FD6D23AA6D9C00D7CF02 /* Main.storyboard */; };
 		C5D0FD7123AA6D9F00D7CF02 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C5D0FD7023AA6D9F00D7CF02 /* Assets.xcassets */; };
 		C5DC3DDD23C478EE000CB125 /* MarketService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5DC3DDC23C478EE000CB125 /* MarketService.swift */; };
+		C5ED351723CDF81100005646 /* Float+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5ED351623CDF81100005646 /* Float+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -65,6 +66,7 @@
 		C5D0FD7023AA6D9F00D7CF02 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C5D0FD7523AA6D9F00D7CF02 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C5DC3DDC23C478EE000CB125 /* MarketService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketService.swift; sourceTree = "<group>"; };
+		C5ED351623CDF81100005646 /* Float+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Float+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,6 +115,7 @@
 				C5B8349C23ABA92100575877 /* UIView+Extension.swift */,
 				C54C15A923C4A0F800B5972C /* JSONDecoder+Extension.swift */,
 				C5B8D3C023CC573500092D01 /* Array+Extension.swift */,
+				C5ED351623CDF81100005646 /* Float+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -318,6 +321,7 @@
 				C53A887223B9DD460036B0FD /* UITabBar+Extension.swift in Sources */,
 				C5B3C70123BE2BED00C56856 /* CurrencyCell.swift in Sources */,
 				C522555023B110F8006FC01D /* TabBarController.swift in Sources */,
+				C5ED351723CDF81100005646 /* Float+Extension.swift in Sources */,
 				C5B8349E23ABA92100575877 /* UIView+Extension.swift in Sources */,
 				C522555623B1116D006FC01D /* MarketViewController.swift in Sources */,
 				C54C15AA23C4A0F800B5972C /* JSONDecoder+Extension.swift in Sources */,

@@ -13,23 +13,23 @@ let images = ["dollarsign.circle", "centsign.circle", "francsign.circle"]
 struct Currency {
     let name: String
     let accountType: String
-    let price: String
+    let price: Float
     let currency: String
-    let price_usd: String
+    let price_usd: Float
     let image: String
     static func getBankData() -> [Currency] {
         return [
-            Currency(name: "HSBC", accountType: "Euro Account", price: "2020", currency: "€", price_usd: "$2240", image: images[0]),
-            Currency(name: "Credit Suisse", accountType: "USD Custody", price: "1340", currency: "$", price_usd: "$1340", image: images[1]),
-            Currency(name: "UBS", accountType: "CHF Account", price: "1471", currency: "CHF", price_usd: "$1500", image: images[2])
+            Currency(name: "HSBC", accountType: "Euro Account", price: 2020, currency: "€", price_usd: 2240, image: images[0]),
+            Currency(name: "Credit Suisse", accountType: "USD Custody", price: 1340, currency: "$", price_usd: 1340, image: images[1]),
+            Currency(name: "UBS", accountType: "CHF Account", price: 1471, currency: "CHF", price_usd: 1500, image: images[2])
         ]
     }
     
     static func getBitCoinData() -> [Currency] {
         return [
-            Currency(name: "BTC", accountType: "Bitcoin Wallet", price: "0093", currency: "₿", price_usd: "$945", image: "BTC"),
-            Currency(name: "LTC", accountType: "Litecoin Wallet", price: "0.01400", currency: "Ł", price_usd: "$240", image: "LTC"),
-            Currency(name: "BCH", accountType: "Bitcoin Cash", price: "131", currency: "₿", price_usd: "$400", image: "BCH")
+            Currency(name: "BTC", accountType: "Bitcoin Wallet", price: 0093, currency: "₿", price_usd: 945, image: "BTC"),
+            Currency(name: "LTC", accountType: "Litecoin Wallet", price: 0.014, currency: "Ł", price_usd: 240, image: "LTC"),
+            Currency(name: "BCH", accountType: "Bitcoin Cash", price: 131, currency: "₿", price_usd: 400, image: "BCH")
         ]
     }
 }

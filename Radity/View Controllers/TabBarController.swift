@@ -33,7 +33,7 @@ class TabBarController: UITabBarController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        selectedIndex = 4
+        selectedIndex = 2
     }
 }
 
