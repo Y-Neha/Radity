@@ -23,7 +23,7 @@
 		C5B8349D23ABA92100575877 /* ViewBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5B8349B23ABA92100575877 /* ViewBuilder.swift */; };
 		C5B8349E23ABA92100575877 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5B8349C23ABA92100575877 /* UIView+Extension.swift */; };
 		C5B834A223ABABFF00575877 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5B834A123ABABFF00575877 /* LoginViewController.swift */; };
-		C5B8D3BB23C70B4500092D01 /* NotificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5B8D3BA23C70B4500092D01 /* NotificationViewController.swift */; };
+		C5B8D3BB23C70B4500092D01 /* MoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5B8D3BA23C70B4500092D01 /* MoreViewController.swift */; };
 		C5B8D3BD23C70B9A00092D01 /* WalletViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5B8D3BC23C70B9A00092D01 /* WalletViewController.swift */; };
 		C5B8D3BF23C7176200092D01 /* MarketCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5B8D3BE23C7176200092D01 /* MarketCell.swift */; };
 		C5B8D3C123CC573500092D01 /* Array+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5B8D3C023CC573500092D01 /* Array+Extension.swift */; };
@@ -55,7 +55,7 @@
 		C5B8349B23ABA92100575877 /* ViewBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewBuilder.swift; sourceTree = "<group>"; };
 		C5B8349C23ABA92100575877 /* UIView+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		C5B834A123ABABFF00575877 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
-		C5B8D3BA23C70B4500092D01 /* NotificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationViewController.swift; sourceTree = "<group>"; };
+		C5B8D3BA23C70B4500092D01 /* MoreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreViewController.swift; sourceTree = "<group>"; };
 		C5B8D3BC23C70B9A00092D01 /* WalletViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletViewController.swift; sourceTree = "<group>"; };
 		C5B8D3BE23C7176200092D01 /* MarketCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketCell.swift; sourceTree = "<group>"; };
 		C5B8D3C023CC573500092D01 /* Array+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Extension.swift"; sourceTree = "<group>"; };
@@ -140,7 +140,7 @@
 				C5B3C6FE23BA386200C56856 /* SliderViewController.swift */,
 				C5B3C70023BE2BED00C56856 /* CurrencyCell.swift */,
 				C5B8D3BE23C7176200092D01 /* MarketCell.swift */,
-				C5B8D3BA23C70B4500092D01 /* NotificationViewController.swift */,
+				C5B8D3BA23C70B4500092D01 /* MoreViewController.swift */,
 				C5B8D3BC23C70B9A00092D01 /* WalletViewController.swift */,
 			);
 			path = "View Controllers";
@@ -328,7 +328,7 @@
 				C5B8349D23ABA92100575877 /* ViewBuilder.swift in Sources */,
 				C522555423B1115F006FC01D /* PortfoliosViewController.swift in Sources */,
 				C522555223B11144006FC01D /* HomeViewController.swift in Sources */,
-				C5B8D3BB23C70B4500092D01 /* NotificationViewController.swift in Sources */,
+				C5B8D3BB23C70B4500092D01 /* MoreViewController.swift in Sources */,
 				C522554C23ACF446006FC01D /* UIColor+Extension.swift in Sources */,
 				C5B8D3C123CC573500092D01 /* Array+Extension.swift in Sources */,
 				C5D0FD6A23AA6D9C00D7CF02 /* SceneDelegate.swift in Sources */,
