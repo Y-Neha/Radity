@@ -57,6 +57,7 @@ class HomeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationController?.navigationBar.isHidden = true
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -68,6 +69,8 @@ class HomeViewController: UIViewController {
         addChild(sliderVC)
         view.addSubview(sliderVC.view)
         wallet = MyWallet.getData()
+        
+
         
     }
     

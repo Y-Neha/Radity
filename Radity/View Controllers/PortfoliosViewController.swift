@@ -27,6 +27,7 @@ class PortfoliosViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationController?.navigationBar.isHidden = true
         setupTableview()
         setupCountryArray()
     }

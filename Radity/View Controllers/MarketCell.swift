@@ -18,6 +18,12 @@ class MarketCell: UITableViewCell {
     let vStack = ViewBuilder.stackview()
     let hStack = ViewBuilder.stackview()
     
+    lazy var animatedViews: [UIView] = {
+        let views = [symbol, name, rank, dollarAmount, dollarChange, vStack, hStack]
+        views.forEach { $0.isSkeletonable = true }
+        return views
+    }()
+    
     var dollarWidth: CGFloat = 0 {
         didSet {
             dollarAmount.widthAnchor.constraint(equalToConstant: dollarWidth).isActive = true
@@ -37,9 +43,31 @@ class MarketCell: UITableViewCell {
         setupCellView()
     }
     
+    func animated(flag: Bool) {
+        animatedViews.forEach { flag ? $0.showAnimatedSkeleton() : $0.hideSkeleton() }
+    }
+    
+    func show(marketCoin: MarketCoin?) {
+        guard let marketCoin = marketCoin else {
+            animated(flag: true)
+            return
+        }
+        symbol.text = marketCoin.symbol
+        name.text = marketCoin.name
+        rank.text = "\(marketCoin.rank)"
+        if let dollar = Float(marketCoin.price_usd) {
+            dollarAmount.text = "$\(dollar.addCommas())"
+        }
+        if let change = Float(marketCoin.percent_change_24h) {
+            dollarChange.text = "$\(change.addCommas())"
+        }
+        animated(flag: false)
+    }
+    
     func setupCellView() {
         hStack.axis = .horizontal
         hStack.spacing = 10
+//        hStack.backgroundColor = UIColor(rgb: 0x0f1847)
         
         hStack.fillVertically(parent: contentView, margin: 8)
         hStack.fillHorizontally(parent: contentView, margin: 20)

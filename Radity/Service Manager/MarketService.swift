@@ -12,9 +12,13 @@ import Alamofire
 struct MarketService {
     
     static func getMarketData(url: String, completionHandler: @escaping (MarketCoinList)-> Void) {
-        let decoder = JSONDecoder()
-        decoder.decode(MarketCoinList.self, fromUrl: url) { list in
-            completionHandler(list)
+        DispatchQueue.global(qos: .userInitiated).async {
+            let decoder = JSONDecoder()
+            decoder.decode(MarketCoinList.self, fromUrl: url) { list in
+                DispatchQueue.main.async {
+                    completionHandler(list)
+                }
+            }
         }
     }
 }

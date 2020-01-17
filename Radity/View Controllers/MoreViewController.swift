@@ -28,6 +28,7 @@ class MoreViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationController?.navigationBar.isHidden = true
         view.backgroundColor = UIColor(rgb: 0x0f1847)
         view.addSubview(vStack)
         setupVStackView()
@@ -74,15 +75,22 @@ class MoreViewController: UIViewController {
     @objc func favoritesButtonPressed(sender: UIButton) {
         print("favoritesButtonPressed")
     }
+    
     @objc func marketButtonPressed(sender: UIButton) {
         print("marketButtonPressed")
+        //TODO: no proper flow
+        navigationController?.pushViewController(MarketViewController(), animated: false)
+
     }
+    
     @objc func upgradeButtonPressed(sender: UIButton) {
         print("upgradeButtonPressed")
     }
+    
     @objc func settingsButtonPressed(sender: UIButton) {
         print("settingsButtonPressed")
     }
+    
     @objc func joinCommunityButtonPressed(sender: UIButton) {
         print("joinCommunityButtonPressed")
     }

@@ -25,14 +25,11 @@ class LoginViewController: UIViewController {
         setupLoginView()
     }
     
-    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         NotificationCenter.default.addObserver(self, selector: #selector(showKeyboard(notification: )), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(hideKeyboard(notification: )), name: UIResponder.keyboardWillHideNotification, object: nil)
-        
         navigationController?.navigationBar.isHidden = true
-
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -226,7 +223,7 @@ struct LoginViewRepresentable: UIViewRepresentable {
     }
     
     func updateUIView(_ view: UIView, context: Context) {
-
+        
     }
 }
 @available(iOS 13.0, *)
