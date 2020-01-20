@@ -15,18 +15,20 @@ class MarketViewController: UIViewController {
     let identifier = "marketCell"
     let upIcon = UIImage(systemName: "arrowtriangle.up")
     let downIcon = UIImage(systemName: "arrowtriangle.down")
-    var dollarWidth: CGFloat = 100
-    var dollarChangeWidth: CGFloat = 100
+    var dollarWidth: CGFloat = 0
+    var dollarChangeWidth: CGFloat = 0
     var isAscending = true
     var isDataLoaded = false
     
     var marketCoins:[MarketCoin] = [] {
         didSet{
             let dollarflatmap = marketCoins.compactMap {getWidth($0.price_usd)}
-            dollarWidth = dollarflatmap.max() ?? 100
+            dollarWidth = dollarflatmap.max() ?? 0
             let dollarChangeflatmap = marketCoins.compactMap {getWidth($0.percent_change_24h)}
-            dollarChangeWidth = dollarChangeflatmap.max() ?? 100
-            tableView.reloadData()
+            dollarChangeWidth = dollarChangeflatmap.max() ?? 0
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
         }
     }
     
@@ -39,14 +41,11 @@ class MarketViewController: UIViewController {
         navigationController?.navigationBar.isHidden = true
         tableView.isSkeletonable = true
         setupTableview()
+        marketCoins = MarketCoin.mockDataList
         MarketService.getMarketData(url: "https://api.coinlore.com/api/tickers/") { [weak self] list in
             self?.isDataLoaded = true
             self?.marketCoins = list.data
         }
-    }
-    
-    override func viewDidLayoutSubviews() {
-        view.layoutSkeletonIfNeeded()
     }
     
     func setupTableview() {
@@ -120,7 +119,7 @@ class MarketViewController: UIViewController {
     func showSkeleton() {
         view.showSkeleton(transition: .crossDissolve(0.25))
     }
-
+    
     func hideSkeleton() {
         view.hideSkeleton(transition: .crossDissolve(0.25))
     }
@@ -144,18 +143,16 @@ extension MarketViewController: UITableViewDelegate {
 extension MarketViewController: SkeletonTableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return isDataLoaded ? marketCoins.count : 20
+        return marketCoins.count
     }
-
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath) as! MarketCell
-        let coin = isDataLoaded ? marketCoins[indexPath.row] : nil
-        cell.show(marketCoin: coin)
-        cell.dollarWidth = dollarWidth
-        cell.dollarChangeWidth = dollarChangeWidth
+        let coin = marketCoins[indexPath.row]
+        cell.show(marketCoin: coin, animate: !isDataLoaded, dollarWidth: dollarWidth, dollarChangeWidth: dollarChangeWidth)
         return cell
     }
-
+    
     func collectionSkeletonView(_ skeletonView: UITableView, cellIdentifierForRowAt indexPath: IndexPath) -> ReusableCellIdentifier {
         return identifier
     }

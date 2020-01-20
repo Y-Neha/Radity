@@ -15,9 +15,7 @@ struct MarketService {
         DispatchQueue.global(qos: .userInitiated).async {
             let decoder = JSONDecoder()
             decoder.decode(MarketCoinList.self, fromUrl: url) { list in
-                DispatchQueue.main.async {
-                    completionHandler(list)
-                }
+                completionHandler(list)
             }
         }
     }

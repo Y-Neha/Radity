@@ -15,11 +15,12 @@ class MarketCell: UITableViewCell {
     let rank = ViewBuilder.label()
     let dollarAmount = ViewBuilder.label()
     let dollarChange = ViewBuilder.label()
-    let vStack = ViewBuilder.stackview()
-    let hStack = ViewBuilder.stackview()
+    
+    let container = ViewBuilder.view()
+    let nameContainer = ViewBuilder.view()
     
     lazy var animatedViews: [UIView] = {
-        let views = [symbol, name, rank, dollarAmount, dollarChange, vStack, hStack]
+        let views = [rank, symbol, name, dollarAmount, dollarChange]
         views.forEach { $0.isSkeletonable = true }
         return views
     }()
@@ -38,20 +39,24 @@ class MarketCell: UITableViewCell {
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        contentView.backgroundColor = UIColor(rgb: 0x0f1847)
-        contentView.addSubview(hStack)
-        setupCellView()
+        contentView.addSubview(container)
+        container.backgroundColor = UIColor(rgb: 0x0f1847)
+        container.fill(parent: contentView)
+        container.heightAnchor.constraint(equalToConstant: 66).isActive = true
+        
+        constructCell()
     }
     
-    func animated(flag: Bool) {
-        animatedViews.forEach { flag ? $0.showAnimatedSkeleton() : $0.hideSkeleton() }
+    func hideAnimation() {
+        animatedViews.forEach { $0.hideSkeleton() }
     }
     
-    func show(marketCoin: MarketCoin?) {
-        guard let marketCoin = marketCoin else {
-            animated(flag: true)
-            return
-        }
+    func showAnimation() {
+        animatedViews.forEach { $0.showAnimatedGradientSkeleton() }
+    }
+    
+    func show(marketCoin: MarketCoin, animate: Bool, dollarWidth: CGFloat, dollarChangeWidth: CGFloat) {
+        
         symbol.text = marketCoin.symbol
         name.text = marketCoin.name
         rank.text = "\(marketCoin.rank)"
@@ -61,42 +66,54 @@ class MarketCell: UITableViewCell {
         if let change = Float(marketCoin.percent_change_24h) {
             dollarChange.text = "$\(change.addCommas())"
         }
-        animated(flag: false)
+        animate ? showAnimation() : hideAnimation()
     }
     
-    func setupCellView() {
-        hStack.axis = .horizontal
-        hStack.spacing = 10
-//        hStack.backgroundColor = UIColor(rgb: 0x0f1847)
-        
-        hStack.fillVertically(parent: contentView, margin: 8)
-        hStack.fillHorizontally(parent: contentView, margin: 20)
+    func constructCell() {
 
-        vStack.axis = .vertical
-        vStack.spacing = 4
-        vStack.addArrangedSubview(symbol)
-        vStack.addArrangedSubview(name)
-        vStack.backgroundColor = .red
-        vStack.alignment = .leading
-        hStack.heightAnchor.constraint(equalToConstant: 50).isActive = true
-        symbol.font = UIFont(name: "Avenir-Black", size: 16)
-        symbol.textColor = .white
-        name.numberOfLines = 2
-        name.font = UIFont(name: "Avenir", size: 14)
-        name.textColor = .white
+        container.addSubview(rank)
+        container.addSubview(nameContainer)
+        container.addSubview(dollarAmount)
+        container.addSubview(dollarChange)
+        
+        nameContainer.addSubview(name)
+        nameContainer.addSubview(symbol)
+    
         rank.font = UIFont(name: "Avenir", size: 12)
         rank.textColor = .white
-        rank.widthAnchor.constraint(equalToConstant: 24).isActive = true
-        dollarAmount.textAlignment = .right
-        dollarChange.textAlignment = .right
+//        rank.text = "Rank"
+        rank.leadingAnchor.constraint(equalTo: container.leadingAnchor, constant: 20).isActive = true
+        rank.fillVertically(parent: container, margin: 20)
+        rank.widthAnchor.constraint(equalToConstant: 40).isActive = true
+        
+        nameContainer.fillVertically(parent: container)
+        nameContainer.leadingAnchor.constraint(equalTo: rank.trailingAnchor, constant: 10).isActive = true
+        nameContainer.trailingAnchor.constraint(equalTo: dollarAmount.leadingAnchor, constant: -10).isActive = true
+
+        symbol.font = UIFont(name: "Avenir-Black", size: 16)
+        symbol.textColor = .white
+//        symbol.text = "BTC"
+        symbol.topAnchor.constraint(equalTo: nameContainer.topAnchor, constant: 8).isActive = true
+
+//        name.text = "Bitcoin"
+        name.textColor = .white
+        name.font = UIFont(name: "Avenir-Black", size: 16)
+        name.numberOfLines = 2
+        name.bottomAnchor.constraint(equalTo: nameContainer.bottomAnchor, constant: -8).isActive = true
+        
+//        dollarAmount.text = "$1245"
         dollarAmount.font = UIFont(name: "Avenir-Black", size: 16)
-        dollarChange.font = UIFont(name: "Avenir-Black", size: 16)
         dollarAmount.textColor = .white
+        dollarAmount.textAlignment = .right
+        dollarAmount.fillVertically(parent: container, margin: 20)
+
+//        dollarChange.text = "$77"
         dollarChange.textColor = .white
-        hStack.addArrangedSubview(rank)
-        hStack.addArrangedSubview(vStack)
-        hStack.addArrangedSubview(dollarAmount)
-        hStack.addArrangedSubview(dollarChange)
+        dollarChange.font = UIFont(name: "Avenir-Black", size: 16)
+        dollarChange.textAlignment = .right
+        dollarChange.trailingAnchor.constraint(equalTo: container.trailingAnchor, constant: -20).isActive = true
+        dollarChange.fillVertically(parent: container, margin: 20)
+        dollarChange.leadingAnchor.constraint(equalTo: dollarAmount.trailingAnchor, constant: 10).isActive = true
     }
     
     required init?(coder: NSCoder) {

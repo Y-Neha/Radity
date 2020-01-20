@@ -77,9 +77,8 @@ class MoreViewController: UIViewController {
     }
     
     @objc func marketButtonPressed(sender: UIButton) {
-        print("marketButtonPressed")
-        //TODO: no proper flow
-        navigationController?.pushViewController(MarketViewController(), animated: false)
+        print("marketButtonPressed")        
+        tabBarController?.selectedIndex = 3
 
     }
     
