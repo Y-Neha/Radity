@@ -13,19 +13,18 @@ class MarketViewController: UIViewController {
     
     let tableView = ViewBuilder.tableView()
     let identifier = "marketCell"
+    let headerIdentifier = "header"
     let upIcon = UIImage(systemName: "arrowtriangle.up")
     let downIcon = UIImage(systemName: "arrowtriangle.down")
-    var dollarWidth: CGFloat = 0
-    var dollarChangeWidth: CGFloat = 0
     var isAscending = true
     var isDataLoaded = false
     
     var marketCoins:[MarketCoin] = [] {
         didSet{
             let dollarflatmap = marketCoins.compactMap {getWidth($0.price_usd)}
-            dollarWidth = dollarflatmap.max() ?? 0
+            MarketCell.dollarWidth = dollarflatmap.max() ?? 0
             let dollarChangeflatmap = marketCoins.compactMap {getWidth($0.percent_change_24h)}
-            dollarChangeWidth = dollarChangeflatmap.max() ?? 0
+            MarketCell.dollarChangeWidth = dollarChangeflatmap.max() ?? 0
             DispatchQueue.main.async {
                 self.tableView.reloadData()
             }
@@ -39,6 +38,7 @@ class MarketViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.navigationBar.isHidden = true
+        view.backgroundColor = UIColor(rgb: 0x0f1847)
         tableView.isSkeletonable = true
         setupTableview()
         marketCoins = MarketCoin.mockDataList
@@ -62,6 +62,7 @@ class MarketViewController: UIViewController {
     func setupHeaderView(frame: CGRect) -> UIView {
         
         let headerView = UIView(frame: frame)
+        headerView.backgroundColor = .green
         let hStack = ViewBuilder.stackview()
         hStack.axis = .horizontal
         hStack.distribution = .fillProportionally
@@ -69,9 +70,6 @@ class MarketViewController: UIViewController {
         headerView.addSubview(hStack)
         hStack.fillHorizontally(parent: headerView, margin: 20)
         hStack.fillVertically(parent: headerView)
-        
-        let width1 = dollarWidth == 0 ? 60 : dollarWidth
-        let width2 = dollarChangeWidth == 0 || dollarChangeWidth < 60 ? 60 : dollarChangeWidth
         let rankButton = ViewBuilder.button()
         let dollarPriceLabel = ViewBuilder.label()
         let priceChangeLabel = ViewBuilder.label()
@@ -89,12 +87,10 @@ class MarketViewController: UIViewController {
         dollarPriceLabel.textAlignment = .right
         dollarPriceLabel.font = UIFont(name: "Avenir", size: 16)
         
-        dollarPriceLabel.widthAnchor.constraint(equalToConstant: width1).isActive = true
         priceChangeLabel.text = "Change"
         priceChangeLabel.textColor = .white
         priceChangeLabel.textAlignment = .right
         priceChangeLabel.font = UIFont(name: "Avenir", size: 16)
-        priceChangeLabel.widthAnchor.constraint(equalToConstant: width2).isActive = true
         hStack.addArrangedSubview(rankButton)
         hStack.addArrangedSubview(dollarPriceLabel)
         hStack.addArrangedSubview(priceChangeLabel)
@@ -115,24 +111,19 @@ class MarketViewController: UIViewController {
         let sortedArray = marketCoins.propertySorted({$0.rank})
         return sortedArray
     }
-    
-    func showSkeleton() {
-        view.showSkeleton(transition: .crossDissolve(0.25))
-    }
-    
-    func hideSkeleton() {
-        view.hideSkeleton(transition: .crossDissolve(0.25))
-    }
 }
 
 extension MarketViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let headerView = setupHeaderView(frame: CGRect(x: 0, y: 0, width: tableView.frame.width, height: 0))
-        let isHidden = marketCoins.count == 0 ? true : false
-        headerView.isHidden = isHidden
-        headerView.backgroundColor = UIColor(rgb: 0x0f1847)
-        return headerView
+        let header = MarketCell(style: .default, reuseIdentifier: "Header")
+        header.rank.text = "Rank"
+        header.rank.font = .systemFont(ofSize: 16)
+        header.dollarAmount.text = "Price"
+        header.dollarAmount.font = .systemFont(ofSize: 16)
+        header.dollarChange.text = "Change"
+        header.dollarChange.font = .systemFont(ofSize: 16)
+        return header
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -149,7 +140,7 @@ extension MarketViewController: SkeletonTableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath) as! MarketCell
         let coin = marketCoins[indexPath.row]
-        cell.show(marketCoin: coin, animate: !isDataLoaded, dollarWidth: dollarWidth, dollarChangeWidth: dollarChangeWidth)
+        cell.show(marketCoin: coin, animate: !isDataLoaded)
         return cell
     }
     

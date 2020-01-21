@@ -60,9 +60,9 @@ struct MarketCoin: Codable {
     let percent_change_1h: String
     let percent_change_7d: String
     
-    static let mock: MarketCoin = MarketCoin(id: "12345", symbol: "hsdihaiusdhiusha", name: "sudhahdiuash", rank: 1234, price_usd: "5347", percent_change_24h: "3452", percent_change_1h: "45", percent_change_7d: "78")
+    static let mock: MarketCoin = MarketCoin(id: "1", symbol: "ETH", name: "Ethereum", rank: 1, price_usd: "5347", percent_change_24h: "1.12", percent_change_1h: "45", percent_change_7d: "78")
     
-    static let mockDataList = [mock, mock, mock, mock, mock, mock, mock, mock, mock, mock, mock, mock, mock, mock, mock, mock, mock, mock, mock]
+    static let mockDataList = Array(0...25).map { _ in mock }
 }
 
 struct MarketCoinList: Codable {
